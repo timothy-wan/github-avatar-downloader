@@ -10,4 +10,4 @@ This program should be executed from the command line, in the following manner:
 
 `node download_avatars.js jquery jquery`
 
-... (whatever else you'd like to include)
+This program uses node module: dotenv, an example .env file has been include for reference.
