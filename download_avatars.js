@@ -16,10 +16,32 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 }
 
+function downloadImageByURL(url, filePath) {
+  var fs = require('fs');
+
+  request.get(url)
+         .on('error', function(err) {
+            console.log('An error has occured while requesting from the page.');
+         })
+         .on('response', function(response) {
+          console.log('Response Status Code: ', response.statusCode);
+          console.log('Response message: ', response.statusMessage);
+          console.log('Content Type: ', response.headers['content-type']);
+          console.log('Downloading image...');
+         })
+         .on('end', function(response) {
+          console.log('Download Complete');
+         })
+         .pipe(fs.createWriteStream(filePath));
+}
+
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
+  console.log(result);
   result.forEach(function(elm) {
     console.log(elm.avatar_url);
   })
 });
+
+downloadImageByURL('https://avatars1.githubusercontent.com/u/43004?v=4', './avatar/test.jpg');
 
