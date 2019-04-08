@@ -37,9 +37,10 @@ function downloadImageByURL(url, filePath) {
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  console.log(result);
   result.forEach(function(elm) {
-    console.log(elm.avatar_url);
+    var url = elm.avatar_url;
+    var path = './avatar/' + elm.login + '.jpg';
+    downloadImageByURL(url, path);
   })
 });
 
