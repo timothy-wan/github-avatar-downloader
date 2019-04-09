@@ -21,7 +21,6 @@ function getRepoContributors(repoOwner, repoName, cb) {
     },
   }
   request(options, function(err, res, body) { // create request for data from url path
-    console.log(res.headers);
     if(res.statusCode === 404) {
       console.log('Entered repo owner/name does not exist!'); //404 response unavailable
     } else if(res.statusCode === 401){
